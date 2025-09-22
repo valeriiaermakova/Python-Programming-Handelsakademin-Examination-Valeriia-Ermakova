@@ -1,5 +1,6 @@
 from Classes_and_functions import Human, Dealer, choose_winner, print_win_count
 
+# welcoming and introduction message, prints once at the beginning of the game
 print(
     """Välkommen till Tärningsspelet 21!\n
     Du behöver slå tärningarna tills du är så nära till 21 poäng som möjligt utan att gå över. Efter det vår Dealer rullar.
@@ -8,39 +9,46 @@ print(
     Lycka till!\n"""
 )
 
-user_choice = 0
-game_options = ["rulla", "stanna", "avsluta"]
+user_choice = 0  # initialize user input to be able to use it straight away in "while" cycle condition
+game_options = [
+    "rulla",
+    "stanna",
+    "avsluta",
+]  # listing valid game options to be able to print error message if user enters something else
 player1 = Human()
 player2 = Dealer()
 
 while user_choice != "avsluta":
-    user_choice = input("Skriva om du vill rulla, stanna eller avsluta:").lower()
-    if user_choice not in game_options:
+    user_choice = input(
+        "Skriva om du vill rulla, stanna eller avsluta:"
+    ).lower()  # case insensitive user input
+    if user_choice not in game_options:  # checking that user input is valid
         print(
             "Error: Du skrev alternativ som inte stöds.\nFörsök igen och se till att du skriver något av följande untan citattecken eller andra symboler:\nrulla, stanna, avsluta.\nOroa dig inte, din progress är sparad."
         )
 
     if user_choice == "rulla":
+        # saving final user roll below to chose winner later
         final_user_score = player1.roll()
         if player1.is_met_epic_loss_condition():
             print("\nDu har nått 21 poäng och förlorade. Dealern är vinnare!")
             player2.win_count += 1
-            player1.score = 0
-            player2.score = 0
+            player1.score = 0  # need to nullify roll count since new round of the game starts after this condition
             print_win_count(player1, player2)
-            continue
+            continue  # need to skip steps below and start a new cycle iteration since new round in game starts here
 
     if user_choice == "stanna":
 
+        # saving final user roll below to chose winner later
         final_dealer_score = player2.roll(17)
 
         if player2.is_met_epic_loss_condition():
             print(f"\nDu är vinnare! Dealern fick 21 eller mer poäng!")
             player1.win_count += 1
-            player1.score = 0
+            player1.score = 0  # need to nullify roll count for both players since new round of the game starts after this condition
             player2.score = 0
             print_win_count(player1, player2)
-            continue
+            continue  # need to skip steps below and start a new cycle iteration since new round in game starts here
         else:
             choose_winner(final_user_score, final_dealer_score, player1, player2)
             print_win_count(player1, player2)

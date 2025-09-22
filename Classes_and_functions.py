@@ -6,10 +6,12 @@ class Player:
         self.score = 0
         self.win_count = 0
 
-    def roll(self):
+    def roll(self):  # defined in subclasses
         pass
 
-    def is_met_epic_loss_condition(self):
+    def is_met_epic_loss_condition(
+        self,
+    ):  # defines immidiate loss when we do not need to proceed with results comparison
         return self.score >= 21
 
 
@@ -22,7 +24,9 @@ class Human(Player):
 
 
 class Dealer(Player):
-    def roll(self, max_treshhold):
+    def roll(
+        self, max_treshhold
+    ):  # function takes as a parameter a number at reaching which computer/dealer should stop rolling
         while self.score <= max_treshhold:
             self.dice = random.randint(1, 6)
             self.score += self.dice
@@ -30,6 +34,7 @@ class Dealer(Player):
         return self.score
 
 
+# this function is not part of class since win condition is separate entity from Player instances
 def choose_winner(user_score, dealer_score, user, dealer):
     if user_score > dealer_score:
         print("\nDu är vinnare!")
@@ -41,6 +46,7 @@ def choose_winner(user_score, dealer_score, user, dealer):
         print("\nDet är oavgjort.")
 
 
+# this function is not part of class since print win count is separate entity from Player instances
 def print_win_count(user, dealer):
     print(f"\nDu vann {user.win_count} spel och dealern vann {dealer.win_count} spel.")
     if user.win_count > dealer.win_count:
