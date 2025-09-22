@@ -23,7 +23,7 @@ while user_choice != "avsluta":
     if user_choice == "rulla":
         final_user_score = player1.roll()
         if player1.is_met_epic_loss_condition():
-            print("Du har nått 21 poäng och förlorade. Dealern är vinnare!")
+            print("\nDu har nått 21 poäng och förlorade. Dealern är vinnare!")
             player2.win_count += 1
             player1.score = 0
             player2.score = 0
@@ -35,7 +35,7 @@ while user_choice != "avsluta":
         final_dealer_score = player2.roll(17)
 
         if player2.is_met_epic_loss_condition():
-            print(f"Du är vinnare! Dealern fick 21 eller mer poäng!")
+            print(f"\nDu är vinnare! Dealern fick 21 eller mer poäng!")
             player1.win_count += 1
             player1.score = 0
             player2.score = 0

@@ -32,20 +32,20 @@ class Dealer(Player):
 
 def choose_winner(user_score, dealer_score, user, dealer):
     if user_score > dealer_score:
-        print("Du är vinnare!")
+        print("\nDu är vinnare!")
         user.win_count += 1
     elif user_score < dealer_score:
-        print("Du förlorade. Dealern är vinnare! ")
+        print("\nDu förlorade. Dealern är vinnare! ")
         dealer.win_count += 1
     else:
-        print("Det är oavgjort.")
+        print("\nDet är oavgjort.")
 
 
 def print_win_count(user, dealer):
-    print(f"Du vann {user.win_count} spel och dealern vann {dealer.win_count} spel.")
+    print(f"\nDu vann {user.win_count} spel och dealern vann {dealer.win_count} spel.")
     if user.win_count > dealer.win_count:
-        print("Du leder! Bra jobbat! Låt oss fortsätta i nästa omgång!")
+        print("Du leder! Bra jobbat! Låt oss fortsätta i nästa omgång!\n")
     elif dealer.win_count > user.win_count:
-        print("Du kommer efter. Ge inte upp! Försök igen!")
+        print("Du kommer efter. Ge inte upp! Försök igen!\n")
     else:
-        print("Det är oavgjort. Vem ska vinna nästa gång?")
+        print("Det är oavgjort. Vem ska vinna nästa gång?\n")
