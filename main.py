@@ -1,5 +1,4 @@
-import Classes_and_functions
-from Classes_and_functions import print_win_count
+from Classes_and_functions import Human, Dealer, choose_winner, print_win_count
 
 print(
     """Välkommen till Tärningsspelet 21!\n
@@ -11,8 +10,8 @@ print(
 
 user_choice = 0
 game_options = ["rulla", "stanna", "avsluta"]
-player1 = Classes_and_functions.Human()
-player2 = Classes_and_functions.Dealer()
+player1 = Human()
+player2 = Dealer()
 
 while user_choice != "avsluta":
     user_choice = input("Skriva om du vill rulla, stanna eller avsluta:").lower()
@@ -43,7 +42,5 @@ while user_choice != "avsluta":
             print_win_count(player1, player2)
             continue
         else:
-            Classes_and_functions.choose_winner(
-                final_user_score, final_dealer_score, player1, player2
-            )
+            choose_winner(final_user_score, final_dealer_score, player1, player2)
             print_win_count(player1, player2)
