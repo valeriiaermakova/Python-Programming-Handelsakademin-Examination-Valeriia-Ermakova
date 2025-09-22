@@ -30,3 +30,5 @@ def choose_winner(user_score, dealer_score):
         print("Du är vinnare!")
     elif user_score < dealer_score:
         print("Du förlorade. Dealern är vinnare!")
+    else:
+        print("Det är oavgjort!")
