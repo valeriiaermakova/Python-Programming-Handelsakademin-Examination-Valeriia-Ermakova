@@ -1,4 +1,3 @@
-import pytest
 from Classes_and_functions import choose_winner, Human, Dealer
 
 
@@ -38,8 +37,15 @@ def test_should_check_that_computer_not_rolling_less_than_treshhold():
 
 
 # checking that corresponding function catches immediate loss when player/dealer reaches 21 since it is core rule of the game
-def test_should_check_immediate_lost_boolean():
+def test_should_check_immediate_lost_boolean_for_human():
     user = Human()
     user.score = 21
+    result = user.is_met_epic_loss_condition()
+    assert result == True
+
+
+def test_should_check_immediate_lost_boolean_for_dealer():
+    user = Dealer()
+    user.score = 22
     result = user.is_met_epic_loss_condition()
     assert result == True
