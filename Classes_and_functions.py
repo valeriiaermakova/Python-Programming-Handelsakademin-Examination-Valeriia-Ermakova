@@ -24,9 +24,8 @@ class Human(Player):
 
 
 class Dealer(Player):
-    def roll(
-        self, max_treshhold
-    ):  # function takes as a parameter a number at reaching which computer/dealer should stop rolling
+    def roll(self, max_treshhold):
+        # function takes as a parameter a number at reaching which computer/dealer should stop rolling
         while self.score <= max_treshhold:
             self.dice = random.randint(1, 6)
             self.score += self.dice
@@ -47,8 +46,12 @@ def choose_winner(user_score, dealer_score, user, dealer):
 
 
 # this function is not part of class since print win count is separate entity from Player instances
-def print_win_count(user, dealer):
-    print(f"\nDu vann {user.win_count} spel och dealern vann {dealer.win_count} spel.")
+def give_win_count(user, dealer, file):
+    win_count_output = (
+        f"\nDu vann {user.win_count} spel och dealern vann {dealer.win_count} spel.\n"
+    )
+    print(win_count_output)
+    file.write(win_count_output)
     if user.win_count > dealer.win_count:
         print("Du leder! Bra jobbat! Låt oss fortsätta i nästa omgång!\n")
     elif dealer.win_count > user.win_count:
