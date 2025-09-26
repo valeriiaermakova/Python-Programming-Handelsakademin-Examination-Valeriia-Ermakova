@@ -1,0 +1,3 @@
+Pytest framework should be installed to run unit tests
+The code imports random module
+The code will create file results_of_last_game.txt in your file system
