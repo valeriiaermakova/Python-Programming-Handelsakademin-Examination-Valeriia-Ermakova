@@ -1,5 +1,5 @@
 import pytest
-from Classes_and_functions import choose_winner, Human, Dealer, Player
+from Classes_and_functions import choose_winner, Human, Dealer
 
 
 # checking who is defned as winner since it is core bussiness logic and affects potential profit/losses
