@@ -35,7 +35,7 @@ while user_choice != "avsluta":
             print("\nDu har nått 21 poäng och förlorade. Dealern är vinnare!")
             player2.win_count += 1
             player1.score = 0  # need to nullify roll count since new round of the game starts after this condition
-            give_win_count(player1, player2, file)
+            print(give_win_count(player1, player2, file))
             continue  # need to skip steps below and start a new cycle iteration since new round in game starts here
 
     if user_choice == "stanna":
@@ -51,11 +51,15 @@ while user_choice != "avsluta":
                 player1.win_count += 1
                 player1.score = 0  # need to nullify roll count for both players since new round of the game starts after this condition
                 player2.score = 0
-                give_win_count(player1, player2, file)
+                print(give_win_count(player1, player2, file))
                 continue  # need to skip steps below and start a new cycle iteration since new round in game starts here
             else:
-                choose_winner(final_user_score, final_dealer_score, player1, player2)
-                give_win_count(player1, player2, file)
+                print(
+                    choose_winner(
+                        final_user_score, final_dealer_score, player1, player2
+                    )
+                )
+                print(give_win_count(player1, player2, file))
                 final_user_score = 0
                 player1.score = 0  # need to nullify roll count for both players since new round of the game starts after this condition
                 player2.score = 0
