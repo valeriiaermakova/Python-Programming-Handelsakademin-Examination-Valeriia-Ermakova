@@ -63,4 +63,5 @@ while user_choice != "avsluta":
                 final_user_score = 0
                 player1.score = 0  # need to nullify roll count for both players since new round of the game starts after this condition
                 player2.score = 0
+
 file.close()
